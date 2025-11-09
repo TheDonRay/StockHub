@@ -1,19 +1,25 @@
-const express = require('express'); 
-const app = express();  
-require('dotenv').config(); // for the dot env here.
+const express = require("express");
+const app = express();
+require("dotenv").config(); // for the dot env here. 
 
-// simple middleare to get started. 
-app.use(express.json()); 
+//instantiate the routes here 
+const testingRoute = require("./routes/testRoute.js"); 
 
-const PORT = process.env.PORT;  
+// simple middleare to get started.
+app.use(express.json());
 
-app.get('/', (req, res) => { 
-    res.send({ 
-        Server: 'Backend is running Ray'
-    }); 
-}); 
+//define Port
+const PORT = process.env.PORT; 
 
-app.listen(PORT, () => { 
-    console.log(`Server running on http://localhost:${PORT}`); 
-}); 
+//define the  route mapping (the actual routing of the route) 
+app.use('/api/', testingRoute); 
 
+app.get("/", (req, res) => {
+  res.json({
+    Server: "Backend is running Ray",
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
