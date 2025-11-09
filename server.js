@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 
 app.get('/', (req, res) => { 
     res.send({ 
-        ResponseMessage: 'Backend is running Ray'
+        Server: 'Backend is running Ray'
     }); 
 }); 
 
